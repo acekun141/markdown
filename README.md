@@ -52,7 +52,7 @@ docker-compose up
 
 After successful deployment, we will go all the way to the operation of the app.
 
-When running docker-compose up, there will be 3 containers created (flask, nginx and mongodb).
+When running ```docker-compose up```, there will be 3 containers created (flask, nginx and mongodb).
 
 * **Flask** is built based on the Dockerfile file (../flask/Dockerfile). This image flask is based on the main image of python: 3.7.3-stretch, from this main image we will install applications like logrotate (log rotation), docker-compose (used to run docker-compose in the repository) as well as Install python libraries located in requirements.txt (../flask/app/requirements.txt). Also in this image flask, we will mount the logrotate and supervisor's config directories into the container.
 * **Nginx** Built from image nginx: latest with config in nginx.conf file (../nginx/nginx.conf). The project using nginx is a web server that acts as an HTTP proxy and load balancer.
@@ -63,7 +63,7 @@ When running docker-compose up, there will be 3 containers created (flask, nginx
 
 After the client sends a request to the server. Nginx will capture the request, it will be responsible as an HTTP proxy catch the request then send the request back to Gunicorn in Flask Container.
 
-Gunicorn will act as a web server running flask. Normally an app flask can be run using app.run (), but the drawback of this method is that the app will handle one request at a time (only one request can be processed at a time). Gunicorn will solve this problem by using workers as well as threads, and the app will now be able to handle more requests at the same time.
+Gunicorn will act as a web server running flask. Normally an app flask can be run using ```app.run()```, but the drawback of this method is that the app will handle one request at a time (only one request can be processed at a time). Gunicorn will solve this problem by using workers as well as threads, and the app will now be able to handle more requests at the same time.
 
 
 ## Author
