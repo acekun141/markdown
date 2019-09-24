@@ -60,6 +60,7 @@ When running docker-compose up, there will be 3 containers created (flask, nginx
 
 ### How to operate
 **client** --request -> **nginx** --request -> **gunicorn** --response -> **client**
+
 After the client sends a request to the server. Nginx will capture the request, it will be responsible as an HTTP proxy catch the request then send the request back to Gunicorn in Flask Container.
 Gunicorn will act as a web server running flask. Normally an app flask can be run using app.run (), but the drawback of this method is that the app will handle one request at a time (only one request can be processed at a time). Gunicorn will solve this problem by using workers as well as threads, and the app will now be able to handle more requests at the same time.
 
